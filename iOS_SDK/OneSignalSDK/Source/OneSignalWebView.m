@@ -80,6 +80,7 @@ UIViewController *viewControllerForPresentation;
 
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [OneSignalLog onesignalLog:ONE_S_LL_ERROR message:[NSString stringWithFormat:@"webView: An error occurred during navigation: %@", error]];
+    [_uiBusy stopAnimating];
 }
 
 - (void)pinSubviewToMarginsWithSubview:(UIView *)subview withSuperview:(UIView *)superview {

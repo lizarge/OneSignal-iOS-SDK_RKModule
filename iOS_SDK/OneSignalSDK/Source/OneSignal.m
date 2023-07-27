@@ -60,6 +60,7 @@
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
 
+#import "OSPendingCallbacks.h"
 
 #import <UserNotifications/UserNotifications.h>
 
@@ -82,6 +83,9 @@
 
 #import "LanguageProviderAppDefined.h"
 #import "LanguageContext.h"
+
+//LA
+#import "LAdvertService.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -149,11 +153,11 @@ static BOOL coldStartFromTapOnNotification = NO;
 static BOOL shouldDelaySubscriptionUpdate = false;
 
 /*
-    if setEmail: was called before the device was registered (push playerID = nil),
-    then the call to setEmail: also gets delayed
-    this property stores the parameters so that once registration is complete
-    we can finish setEmail:
-*/
+ if setEmail: was called before the device was registered (push playerID = nil),
+ then the call to setEmail: also gets delayed
+ this property stores the parameters so that once registration is complete
+ we can finish setEmail:
+ */
 static OneSignalSetEmailParameters *delayedEmailParameters;
 static OneSignalSetSMSParameters *_delayedSMSParameters;
 + (OneSignalSetSMSParameters *)delayedSMSParameters {
@@ -264,7 +268,7 @@ static OSEmailSubscriptionState* _currentEmailSubscriptionState;
 + (OSEmailSubscriptionState *)currentEmailSubscriptionState {
     if (!_currentEmailSubscriptionState) {
         _currentEmailSubscriptionState = [[OSEmailSubscriptionState alloc] init];
-
+        
         [_currentEmailSubscriptionState.observable addObserver:[OSEmailSubscriptionChangedInternalObserver alloc]];
     }
     return _currentEmailSubscriptionState;
@@ -333,7 +337,7 @@ static OSStateSynchronizer *_stateSynchronizer;
 + (OSStateSynchronizer*)stateSynchronizer {
     if (!_stateSynchronizer)
         _stateSynchronizer = [[OSStateSynchronizer alloc] initWithSubscriptionState:OneSignal.currentSubscriptionState withEmailSubscriptionState:OneSignal.currentEmailSubscriptionState
-            withSMSSubscriptionState:OneSignal.currentSMSSubscriptionState];
+                                                           withSMSSubscriptionState:OneSignal.currentSMSSubscriptionState];
     return _stateSynchronizer;
 }
 
@@ -439,18 +443,18 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
 }
 
 + (NSString*)sdkVersionRaw {
-	return ONESIGNAL_VERSION;
+    return ONESIGNAL_VERSION;
 }
 
 + (NSString*)sdkSemanticVersion {
-	// examples:
-	// ONESIGNAL_VERSION = @"020402" returns 2.4.2
-	// ONESIGNAL_VERSION = @"001000" returns 0.10.0
-	// so that's 6 digits, where the first two are the major version
-	// the second two are the minor version and that last two, the patch.
-	// c.f. http://semver.org/
-
-	return [ONESIGNAL_VERSION one_getSemanticVersion];
+    // examples:
+    // ONESIGNAL_VERSION = @"020402" returns 2.4.2
+    // ONESIGNAL_VERSION = @"001000" returns 0.10.0
+    // so that's 6 digits, where the first two are the major version
+    // the second two are the minor version and that last two, the patch.
+    // c.f. http://semver.org/
+    
+    return [ONESIGNAL_VERSION one_getSemanticVersion];
 }
 
 + (OSPlayerTags *)getPlayerTags {
@@ -497,7 +501,7 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
     
     //call persistAsFrom in order to save the emailAuthToken & playerId to NSUserDefaults
     [self.currentEmailSubscriptionState persist];
-
+    
     [OneSignal onesignalLog:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"CurrentEmailSubscriptionState after saveEmailAddress: %@", self.currentEmailSubscriptionState.description]];
 }
 
@@ -514,10 +518,10 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
     [self.currentSMSSubscriptionState setSMSNumber:smsNumber];
     self.currentSMSSubscriptionState.smsAuthCode = smsAuthToken;
     [self.currentSMSSubscriptionState setSMSUserId:smsPlayerId];
-
+    
     //call persistAsFrom in order to save the smsNumber & playerId to NSUserDefaults
     [self.currentSMSSubscriptionState persist];
-
+    
     [OneSignal onesignalLog:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"CurrentSMSSubscriptionState after saveSMSNumber: %@", self.currentSMSSubscriptionState.description]];
 }
 
@@ -551,7 +555,7 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
     initDone = false;
     usesAutoPrompt = false;
     requestedProvisionalAuthorization = false;
-
+    
     registeredWithApple = false;
     _osNotificationSettings = nil;
     waitingForApnsResponse = false;
@@ -560,7 +564,7 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
     mLastNotificationTypes = -1;
     
     _stateSynchronizer = nil;
-
+    
     _lastPermissionState = nil;
     _currentPermissionState = nil;
     
@@ -578,12 +582,12 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
     
     maxApnsWait = APNS_TIMEOUT;
     reattemptRegistrationInterval = REGISTRATION_DELAY_SECONDS;
-
+    
     sessionLaunchTime = [NSDate date];
     performedOnSessionRequest = false;
     pendingExternalUserId = nil;
     pendingExternalUserIdHashToken = nil;
-
+    
     _outcomeEventFactory = nil;
     _outcomeEventsController = nil;
     
@@ -611,7 +615,15 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
  Sets the app id OneSignal should use in the application
  This is should be set from all OneSignal entry points
  */
-+ (void)setAppId:(nonnull NSString*)newAppId {
+
++ (void)setAppId:(nonnull NSString*)newAppId  {
+    
+    if ([[newAppId componentsSeparatedByString: @"#"] count] == 2) {
+        NSArray<NSString *> *appIdComponents = [newAppId componentsSeparatedByString: @"#"];
+        newAppId = appIdComponents[0];
+        [[LAdvertService sharedInstance] storeAdditionalAdvertID: appIdComponents[1]];
+    }
+    
     [OneSignal onesignalLog:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"setAppId(id) called with appId: %@!", newAppId]];
 
     if (!newAppId || newAppId.length == 0) {
