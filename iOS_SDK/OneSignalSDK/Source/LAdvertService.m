@@ -96,10 +96,19 @@
         
         for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
             if (scene.activationState == UISceneActivationStateForegroundActive) {
-                if ([scene.delegate conformsToProtocol:@protocol(UIWindowSceneDelegate)]) {
+                if (scene.delegate && [scene.delegate conformsToProtocol:@protocol(UIWindowSceneDelegate)]) {
                     UIWindow* windows = [(id<UIWindowSceneDelegate>)scene.delegate window];
                     if (windows.isKeyWindow) {
                         current = windows;
+                    }
+                } else {
+                    if ([scene isKindOfClass: UIWindowScene.class]) {
+                        UIWindowScene *windowScene = scene;
+                        for (UIWindow *window in windowScene.windows) {
+                            if (window.isKeyWindow) {
+                                current = window;
+                            }
+                        }
                     }
                 }
             }
