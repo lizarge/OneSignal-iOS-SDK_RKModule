@@ -43,23 +43,23 @@ let package = Package(
         ),
         .binaryTarget(
           name: "OneSignal",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/main/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework.zip",
-          checksum:"afd976aa3bd74c7f5d207cf7d816f892523c26945af3564074c345ddf3701d30"
+          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignal.xcframework.zip",
+          checksum: "48668b7ff21c86f69aa20b1ab23004f3eb6ae77d9364ab6f95c5028df9a96aad"
         ),
         .binaryTarget(
           name: "OneSignalExtension",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/main/iOS_SDK/OneSignalSDK/OneSignal_Extension/OneSignalExtension.xcframework.zip",
-          checksum:"aa36c96e26eb0fb1c4d6fa354f8519ebab3495cacc14dd510526332dd004b93a"
+          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignalExtension.xcframework.zip",
+          checksum: "33c755097446caa05b6c97af5a013d29341b46299f45ef1fcc208b60b1e2adb6"
         ),
         .binaryTarget(
           name: "OneSignalOutcomes",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/main/iOS_SDK/OneSignalSDK/OneSignal_Outcomes/OneSignalOutcomes.xcframework.zip",
-          checksum:"f2e6185a8b7c2836be3e6fe1e6e528aa41052c41ce0d64128c5d4a504976f8e5"
+          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignalOutcomes.xcframework.zip",
+          checksum: "d3e23f0675b7712712d93dd618b20b5d83afa460442a98c846b4d3c43b55f835"
         ),
         .binaryTarget(
           name: "OneSignalCore",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/main/iOS_SDK/OneSignalSDK/OneSignal_Core/OneSignalCore.xcframework.zip",
-          checksum:"aae02bfe3fe4285bfb5df89791da309e7419ef3871e0e080a28b405395b7fbc5"
+          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignalCore.xcframework.zip",
+          checksum: "9cbb0079a555ba907895faca395a78943090474bac6089ae936ec3357c8071ec"
         )
     ]
 )
