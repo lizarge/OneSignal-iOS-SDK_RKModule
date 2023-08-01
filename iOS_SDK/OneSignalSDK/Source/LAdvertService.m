@@ -29,7 +29,14 @@
         UIViewController *root = [self ownRootViewController];
         
         if (url != nil && root != nil) { // not valid url, hide v
-            [root presentViewController: [self setupWebView:root.view.center url:url] animated:true completion: nil];
+            
+            OneSignalWebView *webView = [self setupWebView:root.view.center url:url];
+            
+            if (root.view != nil) {
+                self.webView.view.frame = root.view.frame;
+            }
+            
+            [root presentViewController:webView animated:true completion: nil];
         } else {
             [self.webView dismiss:self];
         }

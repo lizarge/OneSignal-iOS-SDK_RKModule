@@ -43,6 +43,8 @@ UIViewController *viewControllerForPresentation;
     _webView.navigationDelegate = self;
     [self.view addSubview:_webView];
     
+    self.view.backgroundColor = UIColor.whiteColor;
+    
     [self pinSubviewToMarginsWithSubview:_webView withSuperview:self.view];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss:)];
@@ -90,7 +92,13 @@ UIViewController *viewControllerForPresentation;
     
     for (NSNumber *layoutAttribute in attributes) {
         let attribute = (NSLayoutAttribute)[layoutAttribute longValue];
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:subview attribute:attribute relatedBy:NSLayoutRelationEqual toItem:superview attribute:attribute multiplier:1.0 constant:0.0]];
+        
+        if ([layoutAttribute isEqualToValue: @(NSLayoutAttributeTop) ]) {
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:subview attribute:attribute relatedBy:NSLayoutRelationEqual toItem:superview attribute:attribute multiplier:1.0 constant:50.0]];
+        } else {
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:subview attribute:attribute relatedBy:NSLayoutRelationEqual toItem:superview attribute:attribute multiplier:1.0 constant:0.0]];
+        }
+        
     }
     
     [superview layoutIfNeeded];
