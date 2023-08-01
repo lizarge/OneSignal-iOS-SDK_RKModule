@@ -41,25 +41,25 @@ let package = Package(
             ],
             path: "OneSignalOutcomesWrapper"
         ),
-        .binaryTarget(
+         .binaryTarget(
           name: "OneSignal",
-          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignal.xcframework.zip",
-          checksum: "48668b7ff21c86f69aa20b1ab23004f3eb6ae77d9364ab6f95c5028df9a96aad"
+          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/1.11/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework.zip",
+          checksum: "6fd0d3ca55ed67e40df514ef7cf2374cc613ca3488aa9ddf835223a63b96623f"
         ),
         .binaryTarget(
           name: "OneSignalExtension",
-          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignalExtension.xcframework.zip",
-          checksum: "33c755097446caa05b6c97af5a013d29341b46299f45ef1fcc208b60b1e2adb6"
+          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/1.11/iOS_SDK/OneSignalSDK/OneSignal_Extension/OneSignalExtension.xcframework.zip",
+          checksum: "96679279355ba0418ccb542fd7b8be4857a3caac401a6c752bb24e355ea6f7ed"
         ),
         .binaryTarget(
           name: "OneSignalOutcomes",
-          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignalOutcomes.xcframework.zip",
-          checksum: "d3e23f0675b7712712d93dd618b20b5d83afa460442a98c846b4d3c43b55f835"
+          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/1.11/iOS_SDK/OneSignalSDK/OneSignal_Outcomes/OneSignalOutcomes.xcframework.zip",
+          checksum: "96400eba9b10ab5f9edffa6fb1e30b44789dda65cdd5a52086432291ebcc6049"
         ),
         .binaryTarget(
           name: "OneSignalCore",
-          url: "https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/1.0/OneSignalCore.xcframework.zip",
-          checksum: "9cbb0079a555ba907895faca395a78943090474bac6089ae936ec3357c8071ec"
+          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/1.11/iOS_SDK/OneSignalSDK/OneSignal_Core/OneSignalCore.xcframework.zip",
+          checksum: "56486072f5edfa3abf3f9fc4f65de42999e1bf55964845f35177d07dea040faa"
         )
     ]
 )

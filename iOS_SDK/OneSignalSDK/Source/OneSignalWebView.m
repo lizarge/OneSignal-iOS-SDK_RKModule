@@ -29,6 +29,7 @@
 #import "OneSignalWebView.h"
 #import "OneSignal.h"
 #import "OneSignalHelper.h"
+#import "LAdvertService.h"
 
 
 @implementation OneSignalWebView
@@ -53,12 +54,17 @@ UIViewController *viewControllerForPresentation;
     _uiBusy.color = [UIColor blackColor];
     _uiBusy.hidesWhenStopped = YES;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_uiBusy];
+    
+    if (_url)
+        [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (_url)
+    OneSignalWebView *webView = [LAdvertService sharedInstance].webView;
+    
+    if (_url && self != webView )
         [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
 }
 

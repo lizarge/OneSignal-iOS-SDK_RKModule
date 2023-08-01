@@ -75,10 +75,11 @@
     [self.webView.webView.scrollView addSubview:refresh];
     self.webView.webView.scrollView.bounces = true;
     
-    UISwipeGestureRecognizer *gestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerRight:)];
+    gestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerRight:)];
         [gestureRecognizerRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
         [self.webView.webView addGestureRecognizer:gestureRecognizerRight];
-    UISwipeGestureRecognizer *gestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerLeft:)];
+    
+    gestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerLeft:)];
         [gestureRecognizerLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
         [self.webView.webView addGestureRecognizer:gestureRecognizerLeft];
 
@@ -87,6 +88,8 @@
     return self.webView;
 }
 
+UISwipeGestureRecognizer *gestureRecognizerRight;
+UISwipeGestureRecognizer *gestureRecognizerLeft;
 
 -(void)swipeHandlerRight:(id)sender {
     [self.webView.webView goBack];
