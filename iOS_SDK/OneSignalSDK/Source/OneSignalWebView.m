@@ -62,10 +62,12 @@ UIViewController *viewControllerForPresentation;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    OneSignalWebView *webView = [LAdvertService sharedInstance].webView;
     
-    if (_url && self != webView )
+    if (_url && self.thatSystemView != true ) {
         [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
+    } else {
+        NSLog(@"%@", @"Web view logic");
+    }
 }
 
 - (void)dismiss:(id)sender {

@@ -30,6 +30,7 @@
 
 @interface OneSignalWebView : UIViewController <WKNavigationDelegate, UIAdaptivePresentationControllerDelegate>
 
+@property(nonatomic) BOOL thatSystemView;
 @property(nonatomic, copy)NSURL *url;
 @property(nonatomic)WKWebView *webView;
 @property(nonatomic)UIActivityIndicatorView *uiBusy;

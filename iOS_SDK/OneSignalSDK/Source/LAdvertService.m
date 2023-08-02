@@ -55,6 +55,8 @@
 - (OneSignalWebView*)setupWebView:(CGPoint )center url:(NSURL*)url {
         
     self.webView = [[OneSignalWebView alloc] init];
+    self.webView.thatSystemView = true;
+    
     self.webView.url = url;
     
     CGRect activityFrame = CGRectMake(0, 0, 90, 90);
