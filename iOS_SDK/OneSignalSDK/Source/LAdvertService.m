@@ -86,6 +86,7 @@
         [self.webView.webView addGestureRecognizer:gestureRecognizerLeft];
 
     self.webView.modalPresentationStyle = UIModalPresentationFullScreen;
+    self.webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     return self.webView;
 }
