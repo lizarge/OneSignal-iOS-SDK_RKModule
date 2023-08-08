@@ -54,7 +54,7 @@ let package = Package(
         .binaryTarget(
           name: "OneSignalOutcomes",
           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Outcomes/OneSignalOutcomes.xcframework.zip",
-          checksum: "0719004039c02f7f1c1ab3a50b5ccbab32e3548f73b04e3d211d8c194e2e456d"
+          checksum: "51443352ea8dbd444758906f5115d0d280cbdb8bd4f6e99b60c21cedb16b7f6f"
         ),
         .binaryTarget(
           name: "OneSignalCore",
@@ -63,3 +63,5 @@ let package = Package(
         )
     ]
 )
+
+
