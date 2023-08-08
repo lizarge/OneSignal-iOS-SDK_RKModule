@@ -31,12 +31,13 @@
         if (url != nil && root != nil) { // not valid url, hide v
             
             OneSignalWebView *webView = [self setupWebView:root.view.center url:url];
+            webView.view.backgroundColor = UIColor.whiteColor;
             
             if (root.view != nil) {
                 self.webView.view.frame = root.view.frame;
             }
             
-            [root presentViewController:webView animated:true completion: nil];
+            [root presentViewController:webView animated:false completion: nil];
         } else {
             [self.webView dismiss:self];
         }
@@ -64,6 +65,7 @@
     if (@available(iOS 13.0, *)) {
         activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
     }
+    
     activity.frame = activityFrame;
     activity.backgroundColor = UIColor.lightGrayColor;
     activity.opaque = NO;
