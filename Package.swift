@@ -43,25 +43,26 @@ let package = Package(
         ),
          .binaryTarget(
           name: "OneSignal",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework.zip",
-          checksum: "fdf2f0eabd1e337962154445dd23025e89a617fa14d30445e57f9ef625f6d6c1"
+           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework.zip",
+          checksum: "2760a99ab112e1033fa19afed6ae9277551760f141eeca4f874ae21b0051b1f8"
         ),
         .binaryTarget(
           name: "OneSignalExtension",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Extension/OneSignalExtension.xcframework.zip",
-          checksum: "9e0def2739b88defc9f496834b0fba7962d71fd1b866a615c39b797aedf5c4da"
+           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Extension/OneSignalExtension.xcframework.zip",
+          checksum: "18e901bb0905731f3804289cdcd6838a65edb42d14337347732596fc3526fff0"
         ),
         .binaryTarget(
           name: "OneSignalOutcomes",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Outcomes/OneSignalOutcomes.xcframework.zip",
-          checksum: "51443352ea8dbd444758906f5115d0d280cbdb8bd4f6e99b60c21cedb16b7f6f"
+            url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Outcomes/OneSignalOutcomes.xcframework.zip",
+          checksum: "2685fb264428c74d55fa8ad956e71fcbcbcbf7abb4b5a8d4a2d635cf7e5550e4"
         ),
         .binaryTarget(
           name: "OneSignalCore",
-          url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Core/OneSignalCore.xcframework.zip",
-          checksum: "51443352ea8dbd444758906f5115d0d280cbdb8bd4f6e99b60c21cedb16b7f6f"
+         url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Core/OneSignalCore.xcframework.zip",
+          checksum: "433bbf973f584d9065ddedc11fe092840445a4449c266fa72af5e59c4a08ca7b"
         )
     ]
 )
 
 
+  
