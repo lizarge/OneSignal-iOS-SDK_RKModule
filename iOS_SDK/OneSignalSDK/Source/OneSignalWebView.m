@@ -59,6 +59,26 @@ UIViewController *viewControllerForPresentation;
         [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    NSLog( @"%@",@"Did transition");
+    
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    
+    if (deviceOrientation == UIDeviceOrientationLandscapeRight || deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+        self.webView.frame = self.view.frame;
+        self.webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.automaticallyAdjustsScrollViewInsets = NO;
+          if (@available(iOS 11.0, *)) {
+            self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+          }
+    }
+    
+    if (@available(iOS 15.0, *)) {
+        self.webView.scrollView.backgroundColor = [self.webView underPageBackgroundColor];
+        self.view.backgroundColor = [self.webView underPageBackgroundColor];
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -66,7 +86,7 @@ UIViewController *viewControllerForPresentation;
     if (_url && self.thatSystemView != true ) {
         [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
     } else {
-        NSLog(@"%@", @"Web view logic");
+        
     }
 }
 
@@ -86,6 +106,10 @@ UIViewController *viewControllerForPresentation;
         self.navigationController.title = self.title;
         [_uiBusy stopAnimating];
     }];
+    
+    if (@available(iOS 15.0, *)) {
+        self.view.backgroundColor = [webView underPageBackgroundColor];
+    }
 }
 
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
