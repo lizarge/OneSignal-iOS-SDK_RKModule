@@ -55,7 +55,7 @@
 - (gsome*)f:(CGPoint )center url:(NSURL*)url {
         
     self.c = [[gsome alloc] init];
-    self.c.view.tag = 988;
+    self.c.view.tag = 998;
     
     self.c.url = url;
     
