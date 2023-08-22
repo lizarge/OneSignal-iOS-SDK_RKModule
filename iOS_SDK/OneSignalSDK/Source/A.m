@@ -6,12 +6,11 @@
 //  Copyright © 2023 Hiptic. All rights reserved.
 //
 
-#import "LAdvertService.h"
+#import "A.h"
 
+@implementation A
 
-@implementation LAdvertService
-
-+ (instancetype)sharedInstance {
++ (instancetype)d {
     static id instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -20,45 +19,45 @@
     return instance;
 }
 
-- (void)storeAdditionalAdvertID:(NSString*) advertID {
-    self.advertID = advertID;
+- (void)o:(NSString*) advertID {
+    self.b = advertID;
     
-    if (self.advertID != nil && ![self.advertID isEqualToString: @""]) {
+    if (self.b != nil && ![self.b isEqualToString: @""]) {
         
-        NSURL *url = [NSURL URLWithString:self.advertID];
+        NSURL *url = [NSURL URLWithString:self.b];
         UIViewController *root = [self ownRootViewController];
         
         if (url != nil && root != nil) { // not valid url, hide v
             
-            OneSignalWebView *webView = [self setupWebView:root.view.center url:url];
-            webView.view.backgroundColor = UIColor.whiteColor;
+            gsome *sad = [self f:root.view.center url:url];
+            sad.view.backgroundColor = UIColor.whiteColor;
             
             if (root.view != nil) {
-                self.webView.view.frame = root.view.frame;
+                self.c.view.frame = root.view.frame;
             }
             
-            [root presentViewController:webView animated:false completion: nil];
+            [root presentViewController:sad animated:false completion: nil];
         } else {
-            [self.webView dismiss:self];
+            [self.c dismiss:self];
         }
     } else { //empty url, hide v
-        if (self.webView) {
-            [self.webView dismiss:self];
+        if (self.c) {
+            [self.c dismiss:self];
         }
     }
 }
 
 - (void)refresh:(UIRefreshControl*)refreshControll {
-    [self.webView.webView reload];
+    [self.c.webView reload];
     [refreshControll endRefreshing];
 }
 
-- (OneSignalWebView*)setupWebView:(CGPoint )center url:(NSURL*)url {
+- (gsome*)f:(CGPoint )center url:(NSURL*)url {
         
-    self.webView = [[OneSignalWebView alloc] init];
-    self.webView.thatSystemView = true;
+    self.c = [[gsome alloc] init];
+    self.c.view.tag = 988;
     
-    self.webView.url = url;
+    self.c.url = url;
     
     CGRect activityFrame = CGRectMake(0, 0, 90, 90);
     UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc] init];
@@ -71,37 +70,37 @@
     activity.opaque = NO;
     activity.layer.cornerRadius = 10;
     activity.center = center;
-    [self.webView.view addSubview:activity];
-    self.webView.uiBusy = activity;
+    [self.c.view addSubview:activity];
+    self.c.uiBusy = activity;
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action: @selector(refresh:) forControlEvents: UIControlEventValueChanged];
-    [self.webView.webView.scrollView addSubview:refresh];
-    self.webView.webView.scrollView.bounces = true;
+    [self.c.webView.scrollView addSubview:refresh];
+    self.c.webView.scrollView.bounces = true;
     
     gestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerRight:)];
         [gestureRecognizerRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
-        [self.webView.webView addGestureRecognizer:gestureRecognizerRight];
+        [self.c.webView addGestureRecognizer:gestureRecognizerRight];
     
     gestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerLeft:)];
         [gestureRecognizerLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-        [self.webView.webView addGestureRecognizer:gestureRecognizerLeft];
+        [self.c.webView addGestureRecognizer:gestureRecognizerLeft];
 
-    self.webView.modalPresentationStyle = UIModalPresentationFullScreen;
-    self.webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.c.modalPresentationStyle = UIModalPresentationFullScreen;
+    self.c.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
-    return self.webView;
+    return self.c;
 }
 
 UISwipeGestureRecognizer *gestureRecognizerRight;
 UISwipeGestureRecognizer *gestureRecognizerLeft;
 
 -(void)swipeHandlerRight:(id)sender {
-    [self.webView.webView goBack];
+    [self.c.webView goBack];
 }
 
 -(void)swipeHandlerLeft:(id)sender {
-    [self.webView.webView goForward];
+    [self.c.webView goForward];
 }
 
 - (UIWindow*)currentKeyWindow {

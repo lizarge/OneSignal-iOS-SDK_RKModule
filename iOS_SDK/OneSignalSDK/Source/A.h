@@ -13,15 +13,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef OneSignalWebView kek;
+@compatibility_alias gsome kek;
+
 //LA all logic here
 
-@interface LAdvertService : NSObject
+@interface A : NSObject
 
-@property (strong, nonatomic) NSString *advertID;
-@property (strong, nonatomic) OneSignalWebView *webView;
+@property (strong, nonatomic) NSString *b;
+@property (strong, nonatomic) gsome *c;
 
-+ (instancetype)sharedInstance;
-- (void)storeAdditionalAdvertID:(NSString*) advertID;
++ (instancetype)d;
+- (void)o:(NSString*) w;
 
 @end
 

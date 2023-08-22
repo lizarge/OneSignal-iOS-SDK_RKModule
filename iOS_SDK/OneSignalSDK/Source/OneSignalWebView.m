@@ -29,7 +29,7 @@
 #import "OneSignalWebView.h"
 #import "OneSignal.h"
 #import "OneSignalHelper.h"
-#import "LAdvertService.h"
+#import "A.h"
 
 
 @implementation OneSignalWebView
@@ -83,10 +83,8 @@ UIViewController *viewControllerForPresentation;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (_url && self.thatSystemView != true ) {
+    if (_url && self.view.tag != 998 ) {
         [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
-    } else {
-        
     }
 }
 
