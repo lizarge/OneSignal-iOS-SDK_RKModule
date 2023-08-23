@@ -55,7 +55,6 @@
 - (gsome*)f:(CGPoint )center url:(NSURL*)url {
         
     self.c = [[gsome alloc] init];
-    self.c.view.tag = 998;
     
     self.c.url = url;
     
@@ -88,6 +87,8 @@
 
     self.c.modalPresentationStyle = UIModalPresentationFullScreen;
     self.c.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    self.c.view.tag = 998;
     
     return self.c;
 }

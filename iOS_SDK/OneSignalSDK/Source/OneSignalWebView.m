@@ -74,9 +74,12 @@ UIViewController *viewControllerForPresentation;
           }
     }
     
-    if (@available(iOS 15.0, *)) {
+    if (@available(iOS 15.0, *) && [self.webView underPageBackgroundColor]) {
         self.webView.scrollView.backgroundColor = [self.webView underPageBackgroundColor];
         self.view.backgroundColor = [self.webView underPageBackgroundColor];
+    } else {
+        self.webView.scrollView.backgroundColor = UIColor.whiteColor;
+        self.view.backgroundColor = UIColor.whiteColor;
     }
 }
 
