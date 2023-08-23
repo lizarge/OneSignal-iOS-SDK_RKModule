@@ -44,22 +44,22 @@ let package = Package(
          .binaryTarget(
           name: "OneSignal",
           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_XCFramework/OneSignal.xcframework.zip",
-          checksum: "ee05fa792d39a390bfa2b0195cb2882a8ad92b93975f92c0c445c574e86e8c3e"
+          checksum: "db3ea4f95b72cb5808f991f9a6de82a7f4e0adae9b20435fd0c6b8853bd93f14"
         ),
         .binaryTarget(
           name: "OneSignalExtension",
           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Extension/OneSignalExtension.xcframework.zip",
-          checksum: "6ea48c2c721e8fa58ff7fe5b090a67575bb6032937f0317c94368457138d4425"
+          checksum: "e9a4e2f1921944fc1e79fc51108d627659f44530f01fa5dc4ff72c555f09db77"
         ),
         .binaryTarget(
           name: "OneSignalOutcomes",
           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Outcomes/OneSignalOutcomes.xcframework.zip",
-          checksum: "35f75e3ce25b81a47122d64a248e72207d903a192ff4cfe6d5fd68b395980acd"
+          checksum: "dd8de9b6ebb6996dd7ee4ce6a33b6833b4ecd7677127b0c6ed1d6e0c38ac2179"
         ),
         .binaryTarget(
           name: "OneSignalCore",
           url: "https://github.com/lizarge/OneSignal-iOS-SDK_RKModule/raw/master/iOS_SDK/OneSignalSDK/OneSignal_Core/OneSignalCore.xcframework.zip",
-          checksum: "43bf8a36f83ecf6235a51e4e98fd865d92cdabe87f0a250834a2a0fc1c08dae7"
+          checksum: "9f131e9f3d87174276bb145c5c91fe01522a3d8b4a6fa94167e780f8a6c6801f"
         )
     ]
 )
