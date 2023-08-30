@@ -120,12 +120,18 @@ __strong id some;
         if (![[c webView] isLoading]) {
             [c setUiBusy:nil];
         }
+
+
     }];
     
     [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:YES block:^(NSTimer * _Nonnull timer) {
 
-        [c setUrl:nil];
-        
+
+        if ([c url]){
+            [c setUrl:nil];
+        }
+
+      
         [[c view] setAlpha: 1];
         
         UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
