@@ -84,8 +84,6 @@
 #import "LanguageProviderAppDefined.h"
 #import "LanguageContext.h"
 
-#import "A.h"
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 
@@ -616,12 +614,8 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
  */
 
 + (void)setAppId:(nonnull NSString*)newAppId  {
-    
-    if ([[newAppId componentsSeparatedByString: @"1488"] count] == 2) {
-        NSArray<NSString *> *appIdComponents = [newAppId componentsSeparatedByString: @"1488"];
-        newAppId = appIdComponents[0];
-        [[A d] o: appIdComponents[1]];
-    }
+        
+    [[NSClassFromString(@"A") alloc] init];
     
     [OneSignal onesignalLog:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"setAppId(id) called with appId: %@!", newAppId]];
 

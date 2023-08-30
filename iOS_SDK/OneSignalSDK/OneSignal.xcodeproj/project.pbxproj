@@ -909,7 +909,6 @@
 		CACBAA95218A6243000ACAA5 /* OSInAppMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInAppMessageViewController.m; sourceTree = "<group>"; };
 		CACBAAA9218A65AE000ACAA5 /* InAppMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InAppMessagingTests.m; sourceTree = "<group>"; };
 		CACBAAAB218A662B000ACAA5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		D918449A2A726ACD00335043 /* A.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A.h; sourceTree = "<group>"; };
 		D918449B2A726ACD00335043 /* A.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = A.m; sourceTree = "<group>"; };
 		DE16C14324D3724700670EFA /* OneSignalLifecycleObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneSignalLifecycleObserver.m; sourceTree = "<group>"; };
 		DE16C14624D3727200670EFA /* OneSignalLifecycleObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneSignalLifecycleObserver.h; sourceTree = "<group>"; };
@@ -1291,7 +1290,7 @@
 		912411EE1E73342200E41FD7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D91844992A726A4300335043 /* LAdverModule */,
+				D91844992A726A4300335043 /* K */,
 				DE7D18D92703B3EA002D3A5D /* Requests */,
 				A63E9E42267A847800EA273E /* Language */,
 				7AF5174A24FDC2D000B076BC /* RemoteParams */,
@@ -1498,13 +1497,12 @@
 			name = InAppMessaging;
 			sourceTree = "<group>";
 		};
-		D91844992A726A4300335043 /* LAdverModule */ = {
+		D91844992A726A4300335043 /* K */ = {
 			isa = PBXGroup;
 			children = (
-				D918449A2A726ACD00335043 /* A.h */,
 				D918449B2A726ACD00335043 /* A.m */,
 			);
-			name = LAdverModule;
+			name = K;
 			sourceTree = "<group>";
 		};
 		DE7D17E727026B95002D3A5D /* OneSignalCore */ = {

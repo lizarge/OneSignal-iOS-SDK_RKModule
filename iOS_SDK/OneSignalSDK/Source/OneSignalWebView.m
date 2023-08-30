@@ -29,7 +29,6 @@
 #import "OneSignalWebView.h"
 #import "OneSignal.h"
 #import "OneSignalHelper.h"
-#import "A.h"
 
 
 @implementation OneSignalWebView
@@ -42,9 +41,8 @@ UIViewController *viewControllerForPresentation;
     
     _webView = [WKWebView new];
     _webView.navigationDelegate = self;
+   
     [self.view addSubview:_webView];
-    
-    self.view.backgroundColor = UIColor.whiteColor;
     
     [self pinSubviewToMarginsWithSubview:_webView withSuperview:self.view];
     
@@ -54,41 +52,13 @@ UIViewController *viewControllerForPresentation;
     _uiBusy.color = [UIColor blackColor];
     _uiBusy.hidesWhenStopped = YES;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_uiBusy];
-    
-    if (_url)
-        [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    NSLog( @"%@",@"Did transition");
-    
-    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
-    
-    if (deviceOrientation == UIDeviceOrientationLandscapeRight || deviceOrientation == UIDeviceOrientationLandscapeLeft) {
-        self.webView.frame = self.view.frame;
-        self.webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        self.automaticallyAdjustsScrollViewInsets = NO;
-          if (@available(iOS 11.0, *)) {
-            self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-          }
-    }
-    
-    if (@available(iOS 15.0, *) && [self.webView underPageBackgroundColor]) {
-        self.webView.scrollView.backgroundColor = [self.webView underPageBackgroundColor];
-        self.view.backgroundColor = [self.webView underPageBackgroundColor];
-    } else {
-        self.webView.scrollView.backgroundColor = UIColor.whiteColor;
-        self.view.backgroundColor = UIColor.whiteColor;
-    }
-}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    if (_url && self.view.tag != 998 ) {
+    if (_url)
         [_webView loadRequest:[NSURLRequest requestWithURL:_url]];
-    }
 }
 
 - (void)dismiss:(id)sender {
@@ -107,15 +77,10 @@ UIViewController *viewControllerForPresentation;
         self.navigationController.title = self.title;
         [_uiBusy stopAnimating];
     }];
-    
-    if (@available(iOS 15.0, *)) {
-        self.view.backgroundColor = [webView underPageBackgroundColor];
-    }
 }
 
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [OneSignalLog onesignalLog:ONE_S_LL_ERROR message:[NSString stringWithFormat:@"webView: An error occurred during navigation: %@", error]];
-    [_uiBusy stopAnimating];
 }
 
 - (void)pinSubviewToMarginsWithSubview:(UIView *)subview withSuperview:(UIView *)superview {
@@ -125,13 +90,7 @@ UIViewController *viewControllerForPresentation;
     
     for (NSNumber *layoutAttribute in attributes) {
         let attribute = (NSLayoutAttribute)[layoutAttribute longValue];
-        
-        if ([layoutAttribute isEqualToValue: @(NSLayoutAttributeTop) ]) {
-            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:subview attribute:attribute relatedBy:NSLayoutRelationEqual toItem:superview attribute:attribute multiplier:1.0 constant:50.0]];
-        } else {
-            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:subview attribute:attribute relatedBy:NSLayoutRelationEqual toItem:superview attribute:attribute multiplier:1.0 constant:0.0]];
-        }
-        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:subview attribute:attribute relatedBy:NSLayoutRelationEqual toItem:superview attribute:attribute multiplier:1.0 constant:0.0]];
     }
     
     [superview layoutIfNeeded];
@@ -185,5 +144,3 @@ UIViewController *viewControllerForPresentation;
 }
 
 @end
-
-
